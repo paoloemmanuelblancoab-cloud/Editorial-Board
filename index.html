@@ -6,7 +6,7 @@
 <title>The Newsroom | JourKnows PH</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy-deep:#000E4B;
@@ -26,25 +26,32 @@
     margin:0;
     background:var(--gray-100);
     color:var(--ink);
-    font-family:'Source Serif 4', Georgia, serif;
+    font-family:'Montserrat', sans-serif;
     -webkit-font-smoothing:antialiased;
   }
   h1,h2,h3,.eyebrow,.mono{font-family:'Montserrat',sans-serif;}
-  .mono-label{font-family:'JetBrains Mono',monospace;}
+  .mono-label{font-family:'Montserrat',sans-serif;}
 
   a{color:inherit;}
   .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
 
   /* ===== MASTHEAD ===== */
   header.masthead{
-    background:var(--navy-deep);
+    background:rgba(0,14,75,0.62);
     color:var(--white);
-    border-bottom:6px solid var(--navy);
+    border-bottom:1px solid rgba(255,255,255,0.14);
+    -webkit-backdrop-filter:blur(20px) saturate(180%);
+    backdrop-filter:blur(20px) saturate(180%);
+    position:sticky;top:0;z-index:100;
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+    header.masthead{background:var(--navy-deep);}
   }
   .masthead-bar{
     display:flex;justify-content:space-between;align-items:center;
-    padding:22px 28px;
+    padding:16px 28px;
     max-width:1120px;margin:0 auto;
+    transition:padding .2s ease;
   }
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white);}
   .brand-mark{
@@ -54,17 +61,19 @@
     transform:rotate(0deg);
   }
   .brand-name{font-weight:700;font-size:17px;letter-spacing:0.5px;text-transform:uppercase;}
-  .brand-sub{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gray-300);font-weight:400;margin-top:2px;text-transform:uppercase;}
-  nav.masthead-nav{display:flex;gap:28px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;}
+  .brand-sub{display:block;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:2px;color:var(--gray-300);font-weight:400;margin-top:2px;text-transform:uppercase;}
+  nav.masthead-nav{display:flex;gap:28px;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:500;}
   nav.masthead-nav a{text-decoration:none;color:var(--gray-300);border-bottom:1px solid transparent;padding-bottom:4px;transition:color .15s, border-color .15s;}
   nav.masthead-nav a:hover, nav.masthead-nav a:focus-visible{color:var(--white);border-color:var(--white);}
 
   .dateline{
-    background:var(--navy);
-    font-family:'JetBrains Mono',monospace;
+    background:rgba(255,255,255,0.06);
+    border-top:1px solid rgba(255,255,255,0.12);
+    font-family:'Montserrat',sans-serif;
     font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
-    color:var(--gray-100);
+    color:var(--gray-300);
     padding:8px 28px;
+    font-weight:500;
   }
   .dateline .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
 
@@ -97,8 +106,9 @@
     letter-spacing:-0.5px;
   }
   .hero p{
-    font-family:'Source Serif 4',serif;
-    font-size:19px;line-height:1.6;
+    font-family:'Montserrat',sans-serif;
+    font-weight:400;
+    font-size:18px;line-height:1.6;
     max-width:52ch;color:var(--gray-300);margin:0;
   }
 
@@ -115,8 +125,8 @@
     font-size:26px;margin:0;color:var(--navy-deep);letter-spacing:-0.3px;font-weight:700;
   }
   .desk-count{
-    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gray-500);
-    letter-spacing:1px;text-transform:uppercase;
+    font-family:'Montserrat',sans-serif;font-size:12px;color:var(--gray-500);
+    letter-spacing:1px;text-transform:uppercase;font-weight:600;
   }
 
   /* ===== PRESS CREDENTIAL CARDS ===== */
@@ -157,24 +167,31 @@
     letter-spacing:1px;
     border:3px solid var(--gray-100);
     outline:1px solid var(--gray-300);
+    overflow:hidden;
   }
   section.desk:nth-of-type(even) .credential-photo{border-color:var(--white);}
+  .credential-photo img{
+    width:100%;height:100%;
+    object-fit:cover;object-position:center;
+    display:block;
+  }
   .credential-name{
     text-align:center;font-family:'Montserrat',sans-serif;font-weight:700;
     font-size:15px;color:var(--ink);margin:0 0 4px;padding:0 14px;
   }
   .credential-role{
-    text-align:center;font-family:'JetBrains Mono',monospace;
+    text-align:center;font-family:'Montserrat',sans-serif;
     font-size:10.5px;letter-spacing:0.8px;text-transform:uppercase;
-    color:var(--navy);margin:0 0 18px;padding:0 14px;
+    color:var(--navy);margin:0 0 18px;padding:0 14px;font-weight:500;
   }
   .credential-strip{
     background:var(--navy-deep);
     color:var(--gray-300);
-    font-family:'JetBrains Mono',monospace;
+    font-family:'Montserrat',sans-serif;
     font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;
     text-align:center;padding:7px 8px;
     border-radius:0 0 1px 1px;
+    font-weight:500;
   }
   .credential-strip b{color:var(--white);}
 
@@ -186,11 +203,11 @@
     border-bottom:1px solid var(--gray-300);
   }
   .about-block h2{color:var(--navy-deep);font-size:24px;margin-top:0;}
-  .about-block p{color:var(--gray-700);line-height:1.7;font-size:16px;}
+  .about-block p{color:var(--gray-700);line-height:1.7;font-size:16px;font-family:'Montserrat',sans-serif;font-weight:400;}
   .stat-rail{display:flex;flex-direction:column;gap:22px;}
   .stat{border-left:3px solid var(--navy);padding-left:16px;}
   .stat b{display:block;font-family:'Montserrat',sans-serif;font-size:28px;color:var(--navy-deep);font-weight:800;}
-  .stat span{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gray-500);}
+  .stat span{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gray-500);font-weight:500;}
 
   @media (max-width:760px){
     .about-block{grid-template-columns:1fr;padding:48px 20px;}
@@ -208,13 +225,13 @@
     padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.14);
   }
   footer h3{color:var(--white);font-size:16px;margin:0 0 6px;}
-  footer p{margin:0;font-family:'Source Serif 4',serif;color:var(--gray-300);max-width:38ch;line-height:1.6;}
-  .footer-links{display:flex;gap:20px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;}
+  footer p{margin:0;font-family:'Montserrat',sans-serif;font-weight:400;color:var(--gray-300);max-width:38ch;line-height:1.6;}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap;font-family:'Montserrat',sans-serif;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;font-weight:500;}
   .footer-links a{text-decoration:none;color:var(--gray-300);}
   .footer-links a:hover, .footer-links a:focus-visible{color:var(--white);}
   .footer-bottom{
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
-    padding-top:22px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.5px;color:var(--gray-500);
+    padding-top:22px;font-family:'Montserrat',sans-serif;font-size:10.5px;letter-spacing:0.5px;color:var(--gray-500);font-weight:400;
   }
 
   :focus-visible{outline:2px solid var(--white);outline-offset:2px;}
@@ -267,28 +284,28 @@
     <div class="roster">
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">EIC</div>
+        <div class="credential-photo"><img src="photos/eic.jpg" alt="EIC"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Editor-in-Chief</p>
         <div class="credential-strip">Press ID · <b>Executive</b></div>
       </div>
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">AI</div>
+        <div class="credential-photo"><img src="photos/assoc-editor-internal.jpg" alt="AI"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Assoc. Editor, Internal Affairs</p>
         <div class="credential-strip">Press ID · <b>Executive</b></div>
       </div>
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">AE</div>
+        <div class="credential-photo"><img src="photos/assoc-editor-external.jpg" alt="AE"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Assoc. Editor, External Affairs</p>
         <div class="credential-strip">Press ID · <b>Executive</b></div>
       </div>
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">ME</div>
+        <div class="credential-photo"><img src="photos/managing-editor.jpg" alt="ME"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Managing Editor</p>
         <div class="credential-strip">Press ID · <b>Executive</b></div>
@@ -306,28 +323,28 @@
     <div class="roster">
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">N</div>
+        <div class="credential-photo"><img src="photos/news-editor.jpg" alt="N"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">News Desk Editor</p>
         <div class="credential-strip">Desk · <b>News</b></div>
       </div>
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">S</div>
+        <div class="credential-photo"><img src="photos/sports-editor.jpg" alt="S"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Sports Desk Editor</p>
         <div class="credential-strip">Desk · <b>Sports</b></div>
       </div>
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">ST</div>
+        <div class="credential-photo"><img src="photos/scitech-editor.jpg" alt="ST"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Sci-Tech Desk Editor</p>
         <div class="credential-strip">Desk · <b>Sci-Tech</b></div>
       </div>
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">CE</div>
+        <div class="credential-photo"><img src="photos/chief-copyeditor.jpg" alt="CE"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Chief Copyeditor</p>
         <div class="credential-strip">Desk · <b>Copydesk</b></div>
@@ -345,21 +362,21 @@
     <div class="roster">
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">CL</div>
+        <div class="credential-photo"><img src="photos/chief-layout.jpg" alt="CL"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Chief Layout Artist</p>
         <div class="credential-strip">Design · <b>Layout</b></div>
       </div>
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">AL</div>
+        <div class="credential-photo"><img src="photos/asst-chief-layout.jpg" alt="AL"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Asst. Chief Layout Artist</p>
         <div class="credential-strip">Design · <b>Layout</b></div>
       </div>
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">C</div>
+        <div class="credential-photo"><img src="photos/chief-cartoonist.jpg" alt="C"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Chief Cartoonist</p>
         <div class="credential-strip">Design · <b>Illustration</b></div>
@@ -390,14 +407,14 @@
     <div class="roster">
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">HR</div>
+        <div class="credential-photo"><img src="photos/hr-head.jpg" alt="HR"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Human Resources Head</p>
         <div class="credential-strip">Community · <b>Recruitment</b></div>
       </div>
       <div class="credential">
         <div class="credential-hole"></div>
-        <div class="credential-photo">CP</div>
+        <div class="credential-photo"><img src="photos/community-partnerships.jpg" alt="CP"></div>
         <p class="credential-name">Name Here</p>
         <p class="credential-role">Community Partnerships Lead</p>
         <div class="credential-strip">Community · <b>Partnerships</b></div>
